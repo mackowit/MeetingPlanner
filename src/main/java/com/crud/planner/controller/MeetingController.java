@@ -1,12 +1,8 @@
 package com.crud.planner.controller;
 
 import com.crud.planner.domain.MeetingDto;
-import com.crud.planner.domain.MeetingDto;
-import com.crud.planner.exception.MeetingNotFoundException;
 import com.crud.planner.exception.MeetingNotFoundException;
 import com.crud.planner.mapper.MeetingMapper;
-import com.crud.planner.mapper.MeetingMapper;
-import com.crud.planner.service.MeetingService;
 import com.crud.planner.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,13 +1,9 @@
 package com.crud.planner.controller;
 
 import com.crud.planner.domain.GroupDto;
-import com.crud.planner.domain.LocationDto;
 import com.crud.planner.exception.GroupNotFoundException;
-import com.crud.planner.exception.LocationNotFoundException;
 import com.crud.planner.mapper.GroupMapper;
-import com.crud.planner.mapper.LocationMapper;
 import com.crud.planner.service.GroupService;
-import com.crud.planner.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
