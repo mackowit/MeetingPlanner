@@ -2,7 +2,6 @@ package com.crud.planner.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,22 +22,17 @@ public class Meeting {
     @ManyToOne
     private Location location;
 
-    @ManyToOne
-    @NotNull
-    private User meetingOwner;
-
     @ManyToMany
     private List<User> participants;
 
     public Meeting() {
     }
 
-    public Meeting(Long id, LocalDateTime startDate, LocalDateTime endDate, Location location, User meetingOwner, List<User> participants) {
+    public Meeting(Long id, LocalDateTime startDate, LocalDateTime endDate, Location location, List<User> participants) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
-        this.meetingOwner = meetingOwner;
         this.participants = new ArrayList<>();
     }
 
@@ -56,10 +50,6 @@ public class Meeting {
 
     public Location getLocation() {
         return location;
-    }
-
-    public User getMeetingOwner() {
-        return meetingOwner;
     }
 
     public List<User> getParticipants() {

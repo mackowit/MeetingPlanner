@@ -1,8 +1,6 @@
 package com.crud.planner.service;
 
-import com.crud.planner.domain.Location;
 import com.crud.planner.domain.Meeting;
-import com.crud.planner.exception.LocationNotFoundException;
 import com.crud.planner.exception.MeetingNotFoundException;
 import com.crud.planner.repository.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
