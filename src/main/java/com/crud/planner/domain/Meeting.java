@@ -3,7 +3,6 @@ package com.crud.planner.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,6 +11,8 @@ public class Meeting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String topic;
 
     @NotNull
     private LocalDateTime startDate;
@@ -25,19 +26,27 @@ public class Meeting {
     @ManyToMany
     private List<User> participants;
 
+    private String content;
+
     public Meeting() {
     }
 
-    public Meeting(Long id, LocalDateTime startDate, LocalDateTime endDate, Location location, List<User> participants) {
+    public Meeting(Long id, String topic, LocalDateTime startDate, LocalDateTime endDate, Location location, List<User> participants, String content) {
         this.id = id;
+        this.topic = topic;
         this.startDate = startDate;
         this.endDate = endDate;
         this.location = location;
-        this.participants = new ArrayList<>();
+        this.participants = participants;
+        this.content = content;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getTopic() {
+        return topic;
     }
 
     public LocalDateTime getStartDate() {
@@ -54,6 +63,30 @@ public class Meeting {
 
     public List<User> getParticipants() {
         return participants;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public void setLocation(Location location) {

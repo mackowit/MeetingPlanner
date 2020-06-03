@@ -12,26 +12,30 @@ public class MeetingMapper {
     public Meeting mapToMeeting(final MeetingDto meetingDto) {
         return new Meeting(
                 meetingDto.getId(),
+                meetingDto.getTopic(),
                 meetingDto.getStartDate(),
                 meetingDto.getEndDate(),
                 meetingDto.getLocation(),
-                meetingDto.getParticipants()
+                meetingDto.getParticipants(),
+                meetingDto.getContent()
         );
     }
 
     public MeetingDto mapToMeetingDto(final Meeting meeting) {
         return new MeetingDto(
                 meeting.getId(),
+                meeting.getTopic(),
                 meeting.getStartDate(),
                 meeting.getEndDate(),
                 meeting.getLocation(),
-                meeting.getParticipants()
+                meeting.getParticipants(),
+                meeting.getContent()
         );
     }
 
     public List<MeetingDto> mapToMeetingDtoList(final List<Meeting> meetingList) {
         return meetingList.stream()
-                .map(m -> new MeetingDto(m.getId(), m.getStartDate(), m.getEndDate(), m.getLocation(), m.getParticipants()))
+                .map(m -> new MeetingDto(m.getId(), m.getTopic(), m.getStartDate(), m.getEndDate(), m.getLocation(), m.getParticipants(), m.getContent()))
                 .collect(Collectors.toList());
     }
 }
