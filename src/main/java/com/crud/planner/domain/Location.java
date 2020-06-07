@@ -43,4 +43,9 @@ public class Location {
     public String getAddress() {
         return address;
     }
+
+    @Override
+    public String toString() {
+        return "" + description + ", " + city + ", " + address;
+    }
 }

@@ -2,6 +2,7 @@ package com.crud.planner.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class User {
@@ -20,6 +21,9 @@ public class User {
 
     @ManyToOne
     private Group group;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Meeting> meetings;
 
     public User() {
     }
@@ -49,4 +53,8 @@ public class User {
     }
 
     public Group getGroup() { return group; }
+
+    public List<Meeting> getMeetings() {
+        return meetings;
+    }
 }

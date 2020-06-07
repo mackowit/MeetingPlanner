@@ -1,5 +1,6 @@
 package com.crud.planner.service;
 
+import com.crud.planner.domain.Mail;
 import com.crud.planner.domain.Meeting;
 import com.crud.planner.exception.MeetingNotFoundException;
 import com.crud.planner.repository.MeetingRepository;
@@ -14,12 +15,26 @@ public class MeetingService {
     @Autowired
     private MeetingRepository meetingRepository;
 
+    @Autowired
+    private MailService mailService;
+
     public List<Meeting> getAllMeetings() {
         return meetingRepository.findAll();
     }
 
     public Meeting saveMeeting(final Meeting meeting) {
-        return meetingRepository.save(meeting);
+        for (int i = 0; i < meeting.getParticipants().size(); i++) {
+            mailService.send(new Mail(
+                    meeting.getParticipants().get(i).getEmail(),
+                    "Meeting planner: you have been invited for a meeting",
+                    "You have been invited for a meeting: /n " +
+                            "Meeting subject: " + meeting.getTopic() + "/n" +
+                            "Duration: " + meeting.getStartDate() + " - " + meeting.getEndDate() + "/n" +
+                            "Location: " + meeting.getLocation() +
+                            "Meeting informations: " + meeting.getContent()
+            ));
+        }
+            return meetingRepository.save(meeting);
     }
 
     public Optional<Meeting> getMeetingById(final Long id) {

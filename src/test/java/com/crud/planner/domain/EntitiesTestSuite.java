@@ -33,8 +33,8 @@ public class EntitiesTestSuite {
         Location location = new Location(null, "Location1", "Cracow", "Lubicz 24");
         Group controllingGroup = new Group(null, "Controlling Division");
         Group financialGroup = new Group(null, "Financial Division");
-        User user1 = new User(null, "Marta", "Kołodziej", "macka81@o2.pl", financialGroup);
-        User user2 = new User(null, "Ebi", "Cocker", "guebida8081@gmail.com", controllingGroup);
+        User user1 = new User(null, "Name1", "Lastname1", "email1@o2.pl", financialGroup);
+        User user2 = new User(null, "Name2", "Lastname2", "email2@gmail.com", controllingGroup);
         Meeting meeting = new Meeting(null, "Board meeting", LocalDateTime.of(2020, 4, 30, 12, 0, 0),
                 LocalDateTime.of(2020, 4, 30, 13, 0, 0 ),
                 location, null, "Annual Board meeting");

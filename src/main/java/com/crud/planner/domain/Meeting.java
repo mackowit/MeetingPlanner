@@ -23,7 +23,7 @@ public class Meeting {
     @ManyToOne
     private Location location;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> participants;
 
     private String content;
@@ -95,5 +95,15 @@ public class Meeting {
 
     public void setParticipants(List<User> participants) {
         this.participants = participants;
+    }
+
+    @Override
+    public String toString() {
+        return "\n" + topic + ":\n\t" + datesToString(startDate, endDate) + "\n\t at: " + location + "\n";
+    }
+
+    public String datesToString(LocalDateTime startDate, LocalDateTime endDate) {
+        return "from: " + startDate.getDayOfMonth() + "." + startDate.getMonthValue() + "." + startDate.getYear() + " " + startDate.getHour() +
+                " to " + endDate.getDayOfMonth() + "." + endDate.getMonthValue() + "." + endDate.getYear() + " " + endDate.getHour();
     }
 }
