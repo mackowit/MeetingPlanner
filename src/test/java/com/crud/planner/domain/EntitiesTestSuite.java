@@ -1,5 +1,9 @@
 package com.crud.planner.domain;
 
+import com.crud.planner.domain.Group;
+import com.crud.planner.domain.Location;
+import com.crud.planner.domain.Meeting;
+import com.crud.planner.domain.User;
 import com.crud.planner.repository.GroupRepository;
 import com.crud.planner.repository.LocationRepository;
 import com.crud.planner.repository.MeetingRepository;
@@ -11,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -35,11 +41,12 @@ public class EntitiesTestSuite {
         Group financialGroup = new Group(null, "Financial Division");
         User user1 = new User(null, "Name1", "Lastname1", "email1@o2.pl", financialGroup);
         User user2 = new User(null, "Name2", "Lastname2", "email2@gmail.com", controllingGroup);
+        List<User> participants = new ArrayList<>();
+        participants.add(user1);
+        participants.add(user2);
         Meeting meeting = new Meeting(null, "Board meeting", LocalDateTime.of(2020, 4, 30, 12, 0, 0),
                 LocalDateTime.of(2020, 4, 30, 13, 0, 0 ),
-                location, null, "Annual Board meeting");
-        meeting.getParticipants().add(user1);
-        meeting.getParticipants().add(user2);
+                location, participants, "Annual Board meeting");
         //When
         locationRepository.save(location);
         Long locationId = location.getId();

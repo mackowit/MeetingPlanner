@@ -41,13 +41,8 @@ public class GetUserMeetingsTestSuite {
 
         List<Meeting> usersMeetingList = new ArrayList<>();
         List<Meeting> meetingsList = meetingRepository.findAll();
-        usersMeetingList = userRepository.findById(userId).get().getMeetings();
-        System.out.println(usersMeetingList);
-        /*meetingsList.stream()
-                .map(e -> e.getParticipants().stream()
-                        .filter(u -> u.getId().equals(userId))
-                        .
-                )*//*
+        /*usersMeetingList = userRepository.findById(userId).get().getMeetings();
+        System.out.println(usersMeetingList);*/
 
         List<Meeting> meetingsListToBe = meetingsList.stream()
                 .filter(m -> m.getStartDate().isAfter(LocalDateTime.now()))
@@ -60,7 +55,7 @@ public class GetUserMeetingsTestSuite {
                     .collect(Collectors.toList());
             if (matchedUsersInMeetings.size() > 0) usersMeetingList.add(meeting);
         }
-        System.out.println(usersMeetingList);*/
+        System.out.println(usersMeetingList);
 
     }
 }

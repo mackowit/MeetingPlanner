@@ -22,8 +22,8 @@ public class User {
     @ManyToOne
     private Group group;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Meeting> meetings;
+    /*@ManyToMany(fetch = FetchType.EAGER)
+    private List<Meeting> meetings;*/
 
     public User() {
     }
@@ -54,7 +54,7 @@ public class User {
 
     public Group getGroup() { return group; }
 
-    public List<Meeting> getMeetings() {
+    /*public List<Meeting> getMeetings() {
         return meetings;
-    }
+    }*/
 }

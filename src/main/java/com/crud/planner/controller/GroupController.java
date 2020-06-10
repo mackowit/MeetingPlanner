@@ -22,7 +22,7 @@ public class GroupController {
     private GroupMapper groupMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/groups")
-    public List<GroupDto> getLocations() {
+    public List<GroupDto> getGroups() {
         return groupMapper.mapToGroupDtoList(groupService.getAllGroups());
     }
 

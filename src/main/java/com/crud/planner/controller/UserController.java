@@ -23,7 +23,7 @@ public class UserController {
     private UserMapper userMapper;
 
     @RequestMapping(method = RequestMethod.GET, value = "/users")
-    public List<UserDto> getusers() {
+    public List<UserDto> getUsers() {
         return userMapper.mapToUserDtoList(userService.getAllUsers());
     }
 

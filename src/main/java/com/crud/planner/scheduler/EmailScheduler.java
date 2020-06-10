@@ -35,14 +35,23 @@ public class EmailScheduler {
         List<User> usersList = userRepository.findAll();
         for (User user : usersList) {
             List<Meeting> usersMeetings = getUsersMeetingsToBe(user);
-
-            mailService.send(new Mail(
-                    user.getEmail(),
-                    SUBJECT,
-                    "Everyday information from your Meeting Planner Application about meetings to come that you've been invited for: \n"
-                            + prepareMeetingsInformation(usersMeetings)
-                            + "\n\n\nYour Meeting Planner Application"
-            ));
+            if(usersMeetings.size() > 0) {
+                mailService.send(new Mail(
+                        user.getEmail(),
+                        SUBJECT,
+                        "Everyday information from your Meeting Planner Application about meetings to come that you've been invited for: \n"
+                                + prepareMeetingsInformation(usersMeetings)
+                                + "\n\n\nYour Meeting Planner Application"
+                ));
+            } else {
+                mailService.send(new Mail(
+                        user.getEmail(),
+                        SUBJECT,
+                        "Everyday information from your Meeting Planner Application about meetings to come that you've been invited for: \n"
+                                + "You don't have any incoming meetings."
+                                + "\n\n\nYour Meeting Planner Application"
+                ));
+            }
         }
     }
 
