@@ -18,6 +18,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class EntitiesTestSuite {
@@ -61,6 +63,9 @@ public class EntitiesTestSuite {
         meetingRepository.save(meeting);
         Long meetingId = meeting.getId();
         //Then
+        assertEquals(1, meetingRepository.count());
+
+        //cleanUp
         meetingRepository.deleteById(meetingId);
         locationRepository.deleteById(locationId);
         userRepository.deleteById(user1Id);
@@ -68,4 +73,6 @@ public class EntitiesTestSuite {
         groupRepository.deleteById(finGroupId);
         groupRepository.deleteById(conGroupId);
     }
+
+
 }

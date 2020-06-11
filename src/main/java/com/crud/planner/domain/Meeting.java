@@ -104,6 +104,6 @@ public class Meeting {
 
     public String datesToString(LocalDateTime startDate, LocalDateTime endDate) {
         return "from: " + startDate.getDayOfMonth() + "." + startDate.getMonthValue() + "." + startDate.getYear() + " " + startDate.getHour() +
-                " to " + endDate.getDayOfMonth() + "." + endDate.getMonthValue() + "." + endDate.getYear() + " " + endDate.getHour();
+                " to: " + endDate.getDayOfMonth() + "." + endDate.getMonthValue() + "." + endDate.getYear() + " " + endDate.getHour();
     }
 }
